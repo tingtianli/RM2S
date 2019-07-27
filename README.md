@@ -15,7 +15,8 @@ python train_1st_stage.py --imgs_dir your_voc12_path/VOC2012/JPEGImages/
 ```
 python train_2nd_stage.py --imgs_dir your_voc12_path/VOC2012/JPEGImages/
 ```
-####Testing:
+Trained models will be saved in folder ./model_para
+#### Testing:
 - Pre-trained models [download](https://connectpolyu-my.sharepoint.com/:f:/g/personal/15900416r_connect_polyu_hk/EoqNZf4wnPxHhwKlVtd0XTcBNY-74SgvI4cvG8DUpSiTeQ?e=BpTNcH)
 - Test your single image:
 ```
