@@ -21,7 +21,8 @@ Trained models will be saved in the folder ./model_para
 ```
 python one_img_demo.py --img_dir one_image_path(i.e. imgs/1.png) --net_ini_pkl path_to_trained_models/Net_1st_stage.pkl --netG_img_pkl path_to_trained_models/Net_2nd_stage.pkl
 ```
-- Ca [SIR2 benchmark](http://rose1.ntu.edu.sg/Datasets/sir2Benchmark.asp):
+- Evaluate on [SIR2 benchmark](http://rose1.ntu.edu.sg/Datasets/sir2Benchmark.asp):
+   (K-means threshold coeficents 0.2, 0.8 can show higher overall psnr, but 0.5 and 0.5 can give better perceptual quality.)
 ```
 python benchmark_imgs_process.py --bechmark_dir SIR2_dataset_path --net_ini_pkl path_to_trained_models/Net_1st_stage.pkl --netG_img_pkl path_to_trained_models/Net_2nd_stage.pkl
 ```
