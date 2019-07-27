@@ -73,7 +73,8 @@ def list_images(folder, pattern='/*'):
 
 RB_list=list_images(opt.bechmark_dir,'/Postcard Dataset/*/*/*/*m*.png')+list_images(opt.bechmark_dir,'/SolidObjectDataset/*/*/*/m.jpg')\
                 +list_images(opt.bechmark_dir,'/WildSceneDataset/withgt/*/m.jpg')
-
+bg_list=list_images(opt.bechmark_dir,'/Postcard Dataset/*/*/*/*g*.png')+list_images(opt.bechmark_dir,'/SolidObjectDataset/*/*/*/g.jpg')\
+               +list_images(opt.bechmark_dir,'/WildSceneDataset/withgt/*/g.jpg')
 
 def sobel_mag(input):   # obtain the sobel gradient magnitude
     ref=(input.data).cpu().numpy()
@@ -101,7 +102,9 @@ def DMAP_generation_BR(disparity):  # obtain two thresholds for confidence map
         km= KMeans(n_clusters=2, random_state=0).fit((ref[ind]).reshape(-1, 1) )             
         TH1=np.amax(km.cluster_centers_)
         TH2=np.amin(km.cluster_centers_)
-
+####### 0.5 and 0.5 can show better perceptual performance. But 0.2 and 0.8 can give higher psnr value.
+#        coff1=0.5
+#        coff2=0.5
         coff1=0.2
         coff2=0.8
         mask_R=(MAP_B[i,0,:,:]>(TH1-(TH1-TH2)*coff1))*(MAP_B[i,0,:,:]!=0)
@@ -114,7 +117,7 @@ def DMAP_generation_BR(disparity):  # obtain two thresholds for confidence map
 
 
 
-imgs_data=cd.CustomDataset(RB_list)     
+imgs_data=cd.CustomDataset(RB_list,bg_list)
 
 
 
@@ -133,6 +136,7 @@ netG_img.load_state_dict(torch.load(opt.netG_img_pkl))
 net_ini.eval()
 netG_img.eval()
 aver_psnr=0
+aver_ssim=0
 try:
     os.mkdir('./benchmark_results/')
 except:
@@ -141,7 +145,10 @@ except:
 for i in range(0, len(imgs_data)):
 
 
-    BR_img= imgs_data[i] 
+    BR_img,bg = imgs_data[i]
+
+    bg_cpu = bg.numpy()
+    bg_cpu = bg_cpu.transpose(1, 2, 0)
 
     BR_img=Variable(BR_img.cuda(0)).unsqueeze(0)
     BR_cpu=(BR_img.data).cpu().numpy()
@@ -173,12 +180,16 @@ for i in range(0, len(imgs_data)):
     fake_bg=nn.Sigmoid()(fake_bg)     
 ########
 
-#    
-    fake_ini_cpu=fake_ini.data.cpu().numpy()[0,:,:,:]*255
+#
     fake_bg_cpu=fake_bg.data.cpu().numpy()[0,:,:,:]*255
-    BR_img_cpu=BR_img.data.cpu().numpy()[0,:,:,:]*255
-    fake_ini_cpu=fake_ini_cpu.transpose(1,2,0)
     fake_bg_cpu=fake_bg_cpu.transpose(1,2,0)
-    BR_img_cpu=BR_img_cpu.transpose(1,2,0)
-    imsave('./benchmark_results/result_'+str(i)+'.png', fake_bg_cpu/255.)
 
+
+    aver_psnr=aver_psnr+compare_psnr(fake_bg_cpu,bg_cpu,255)/len(train_set)
+    ssim_eval=ssim(fake_bg_cpu,bg_cpu,win_size=11,data_range=fake_bg_cpu.max() - fake_bg_cpu.min(),multichannel=True)
+    aver_ssim=aver_ssim+ssim_eval/len(train_set)
+
+
+print ('\n')
+print (aver_psnr)
+print (aver_ssim)

@@ -19,7 +19,7 @@ import torch.backends.cudnn as cudnn
 import torch.utils.data
 from torch.autograd import Variable
 import cv2
-import custom_real3 as cd
+import custom_real2 as cd
 import glob
 import numpy as np
 from sklearn.cluster import KMeans
@@ -140,7 +140,7 @@ except:
 
 
 
-BR_img= imgs_data[0]
+BR_img = imgs_data[0]
 
 BR_img=Variable(BR_img.cuda(0)).unsqueeze(0)
 BR_cpu=(BR_img.data).cpu().numpy()
