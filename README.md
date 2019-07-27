@@ -6,7 +6,7 @@
 
 ### How to use
 #### Training:
-- Training process uses images from [VOC2012](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/)
+- Training process uses images from [VOC2012](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/) for reflection image simulation.
 - The network for the first stage process: 
 ```
 python train_1st_stage.py --imgs_dir your_voc12_path/VOC2012/JPEGImages/
