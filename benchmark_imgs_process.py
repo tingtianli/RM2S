@@ -102,7 +102,7 @@ def DMAP_generation_BR(disparity):  # obtain two thresholds for confidence map
         km= KMeans(n_clusters=2, random_state=0).fit((ref[ind]).reshape(-1, 1) )             
         TH1=np.amax(km.cluster_centers_)
         TH2=np.amin(km.cluster_centers_)
-####### 0.5 and 0.5 can show better perceptual performance. But 0.2 and 0.8 can give higher psnr value.
+####### 0.5 and 0.5 can show better perceptual performance. But 0.2 and 0.8 can give better background fidelity.
 #        coff1=0.5
 #        coff2=0.5
         coff1=0.2

@@ -17,7 +17,7 @@ python train_2nd_stage.py --imgs_dir your_voc12_path/VOC2012/JPEGImages/
 ```
 Trained models will be saved in the folder ./model_para
 #### Testing:<br/>
- (K-means threshold coeficents 0.2, 0.8 can show higher overall psnr, but 0.5 and 0.5 can give better perceptual quality.)
+ (K-means threshold coeficents 0.5 and 0.5 can show better perceptual performance. But 0.2 and 0.8 can give better background fidelity)
 - Test your single image:
 ```
 python one_img_demo.py --img_dir one_image_path(i.e. imgs/1.png) --net_ini_pkl path_to_trained_models/Net_1st_stage.pkl --netG_img_pkl path_to_trained_models/Net_2nd_stage.pkl
