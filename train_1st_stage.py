@@ -135,7 +135,6 @@ optimizerG = optim.RMSprop(Net.parameters(), lr = opt.lr*10)
 for epoch in range(0,15000):
 
 
-    running_loss = 0.0
     for i, data in enumerate(trainloader, 0):
         Net.train()
         img_rgb,img2_rgb,BR_img,_ = data # image1 for simulation, image2 for simulation, overlapped image
