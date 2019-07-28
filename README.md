@@ -2,7 +2,7 @@
 ### "Single-Image Reflection Removal via a Two-Stage Background Recovery Process"
 ![cover](cover.PNG)
 
-### The code is implemented on pytorch>=0.2.1
+### Codes are implemented on pytorch>=0.2.1
 
 ### How to use
 #### Training:
