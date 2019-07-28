@@ -18,7 +18,7 @@ python train_2nd_stage.py --imgs_dir your_voc12_path/VOC2012/JPEGImages/
 Trained models will be saved in the folder ./model_para
 #### Testing:
 
-- Test your single image:
+- A single image demo:
 ```
 python one_img_demo.py --img_dir one_image_path(i.e. imgs/1.png) --net_ini_pkl path_to_trained_models/Net_1st_stage.pkl --netG_img_pkl path_to_trained_models/Net_2nd_stage.pkl
 ```
