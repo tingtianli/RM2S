@@ -31,7 +31,7 @@ python benchmark_imgs_process.py --bechmark_dir SIR2_dataset_path --net_ini_pkl 
 ## Citation
 ```
 @Article{li2019rm2s,
-  author    = {Li, Tingtian and Lun, P.K. Daniel},
+  author    = {Li, Tingtian and Lun, Daniel P.K.},
   title     = {Single-Image Reflection Removal via a Two-Stage Background Recovery Process},
   journal   = {IEEE Signal Processing Letters},
   year      = {2019},
