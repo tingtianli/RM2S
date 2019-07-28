@@ -20,7 +20,7 @@ Trained models will be saved in the folder ./model_para
 
 - A single image demo:
 ```
-python one_img_demo.py --img_dir one_image_path(i.e. imgs/1.png) --net_ini_pkl path_to_trained_models/Net_1st_stage.pkl --netG_img_pkl path_to_trained_models/Net_2nd_stage.pkl
+python one_img_demo.py --img_dir one_image_path(e.g. imgs/1.png) --net_ini_pkl path_to_trained_models/Net_1st_stage.pkl --netG_img_pkl path_to_trained_models/Net_2nd_stage.pkl
 ```
 - Evaluate on [SIR2 benchmark](http://rose1.ntu.edu.sg/Datasets/sir2Benchmark.asp):
 ```
