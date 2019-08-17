@@ -1,5 +1,5 @@
 # RM2S
-### "Single-Image Reflection Removal via a Two-Stage Background Recovery Process"
+### Codes for the paper "Single-Image Reflection Removal via a Two-Stage Background Recovery Process"
 ![cover](cover.PNG)
 
 ### Codes are implemented on pytorch>=0.2.1
