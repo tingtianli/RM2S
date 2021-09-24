@@ -1,4 +1,4 @@
-# RM2S
+# Single-Image Reflection Removal via a Two-Stage Background Recovery Process
 ### Codes for the paper "Single-Image Reflection Removal via a Two-Stage Background Recovery Process"
 [[paper](https://connectpolyu-my.sharepoint.com/personal/15900416r_connect_polyu_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2F15900416r%5Fconnect%5Fpolyu%5Fhk%2FDocuments%2Fpapers%2FRM2S%2Epdf&parent=%2Fpersonal%2F15900416r%5Fconnect%5Fpolyu%5Fhk%2FDocuments%2Fpapers)] [[code](https://github.com/tingtianli/RM2S)] 
 ![cover](cover.PNG)
